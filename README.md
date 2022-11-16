@@ -5,12 +5,18 @@ General shell scripts for converting common file formats
 
 Scripts can be ran directly from this directory, or scripts desired for install can be placed in `/usr/local/bin`.
 
+## Features
+
+- Ctrl-c compatible loops.
+- Provide a single file, or convert an entire directory of relevant files.
+- Only install the scripts you need, not a monolith script.
+
 ## webp2gif
 
 Convert `.webp` files to `.gif` files.
 
 ### Requirements
-* `magick` (ImageMagick)
+- `magick` (ImageMagick)
 
 ```
 webp2gif [-h] [<input gif>]
@@ -24,7 +30,7 @@ in conversion of all WebPs in the current working directory.
 Convert `.flac` files to ALAC `.m4a` files compatible with iTunes.
 
 ### Requirements
-* ffmpeg
+- ffmpeg
 
 ```
 flac2alac [-h] [<input flac>]
