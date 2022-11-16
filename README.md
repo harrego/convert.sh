@@ -11,7 +11,7 @@ Scripts can be ran directly from this directory, or scripts desired for install 
 * ffmpeg
 
 ```
-flac2alac [<input flac>]
+flac2alac [-h] [<input flac>]
 
 Neglecting to provide an input FLAC argument will result
 in conversion of all FLACs in the current working directory.
