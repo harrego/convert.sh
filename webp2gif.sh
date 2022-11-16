@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# flac2alac.sh
+# webp2gif.sh
 #
 # convert.sh
 # https://github.com/harrego/convert.sh
@@ -27,43 +27,47 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+
 if [ "$1" = "-h" ]
 then
-    echo "flac2alac [-h] [<input flac>]"
+    echo "webp2gif [-h] [<input gif>]"
     echo ""
-    echo "Neglecting to provide an input FLAC argument will result"
-    echo "in conversion of all FLACs in the current working directory."
+    echo "Neglecting to provide an input WebP argument will result"
+    echo "in conversion of all WebPs in the current working directory."
     echo ""
-    echo "This script requires ffmpeg in PATH."
+    echo "This script requires magick (ImageMagick) in PATH."
     exit
 fi
 
-if [ -z "$(command -v ffmpeg)" ]
+if [ -z "$(command -v magick)" ]
 then
-    echo "Error: this script requires ffmpeg"
+    echo "Error: this script requires magick (ImageMagick). If you"
+    echo "believe that you already have ImageMagick, try updating"
+    echo "to a newer ImageMagick version that bundles the \"magick\""
+    echo "tool."
     exit 1
 fi
 
 if [ ! -z "$1" ]
 then
-    SONG="$1"
-    ffmpeg -i "$SONG" -c:a alac -c:v copy -sample_fmt s16p -ar 44100 "${SONG%.*}.m4a"
+    IMG="$1"
+    magick "$IMG" "${IMG%.*}.gif"
 else
 	FILES=false
-	set -- *.flac
+	set -- *.webp
 	case $1 in
-		("*.flac") FILES=false ;;
+		("*.webp") FILES=false ;;
 		(*) FILES=true ;;
 	esac
 	
 	if [ "$FILES" = false ]
 	then
-		echo "Error: no matching .flac files"
+		echo "Error: no matching .webp files"
 		exit 1
 	fi
 
-    for i in *.flac
+    for i in *.webp
     do
-        ffmpeg -i "$i" -y -c:a alac -c:v copy -sample_fmt s16p -ar 44100 "${i%.*}.m4a" || break
+        magick "$i" "${i%.*}.gif" || break
     done
 fi
