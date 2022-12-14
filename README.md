@@ -38,3 +38,12 @@ flac2alac [-h] [<input flac>]
 Neglecting to provide an input FLAC argument will result
 in conversion of all FLACs in the current working directory.
 ```
+
+## pages2pdfs
+
+AppleScript that batch converts `.pages` documents to `.pdf` files in a selected folder.
+
+### Requirements
+- macOS
+
+Open the script in Script Editor on macOS and run it, select a folder containing `.pages` documents and let it convert each one.
