@@ -25,6 +25,22 @@ Neglecting to provide an input WebP argument will result
 in conversion of all WebPs in the current working directory.
 ```
 
+## webp2jpeg
+
+Convert `.webp` files to `.jpeg` files.
+
+### Requirements
+- `magick` (ImageMagick)
+
+```
+webp2gif [-h] [<input gif>]
+
+Neglecting to provide an input WebP argument will result
+in conversion of all WebPs in the current working directory.
+
+By default uses `-quality 85` for ImageMagick JPEG compression.
+```
+
 ## flac2alac
 
 Convert `.flac` files to ALAC `.m4a` files compatible with iTunes.
